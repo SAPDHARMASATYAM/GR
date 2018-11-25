@@ -27,7 +27,7 @@ public class User implements Serializable, Persistable<String> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "email_id", unique = true, nullable = false, length = 100)
 	private String emailId;
 
@@ -35,7 +35,7 @@ public class User implements Serializable, Persistable<String> {
 	private boolean isUserActive;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "last_login", nullable = false)
+	@Column(name = "last_login", nullable = true)
 	private Date lastLogin;
 
 	@Column(nullable = false, length = 15)

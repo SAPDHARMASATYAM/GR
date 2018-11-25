@@ -21,5 +21,7 @@ public interface UserService {
 	User getUserByEmailIdId(String emailId);
 
 	User registerUser(User user);
+	
+	public List<User> getAllUsers();
 
 }
