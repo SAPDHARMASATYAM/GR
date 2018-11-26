@@ -24,6 +24,10 @@ public class UserController {
 		return userService.getUserByEmailIdId(emailId);
 	}
 	
+	@RequestMapping(value = "/getAllUsers", method = RequestMethod.GET, produces = "application/json")
+	public List<User> getAllUsers() throws Exception {
+		return userService.getAllUsers();
+	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
 	public User login(@RequestBody User user) throws Exception {
 		return userService.userLogin(user.getEmailId(), user.getPassword());
