@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gateranker.entity.User;
-import com.gateranker.jpa.UserRepository;
+import com.gateranker.jpa.repository.UserRepository;
+import com.gateranker.model.User;
 
 
 @Service
@@ -20,7 +20,7 @@ public class UserServiceBean implements UserService {
 
 	@Override
 	public User userLogin(String emailId, String password) {
-		User loginResponse = userRepository.findByEmailIdAndPasswordAndIsUserActive(emailId, password, true);
+		User loginResponse = userRepository.findByUserNameAndPassword(emailId, password);
 		return loginResponse;
 	}
 

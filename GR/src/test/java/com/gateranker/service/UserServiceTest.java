@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.gateranker.entity.User;
+import com.gateranker.model.User;
 
 /**
  * @author satyanarayanakondaparthi
@@ -59,9 +59,11 @@ public class UserServiceTest {
 	@Test
 	public void test() {
 		User user =new User();
-		user.setEmailId("abc@mail.com");
+		user.setUserName("abc@mail.com");
 		user.setPassword("password");
-		user.setLastLogin(new Date());
+		user.setFirstName("Satyam");
+		user.setLastName("Kondaparthy");
+		user.setLastLoginAttempt(new Date());
 		user.setDatOfRegistration(new Date());
 		user.setNew(true);
 		User registerUser = userService.registerUser(user);

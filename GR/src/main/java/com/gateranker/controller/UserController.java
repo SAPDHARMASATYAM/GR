@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gateranker.entity.User;
+import com.gateranker.model.User;
 import com.gateranker.service.UserService;
 
 @RestController
@@ -30,7 +30,7 @@ public class UserController {
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
 	public User login(@RequestBody User user) throws Exception {
-		return userService.userLogin(user.getEmailId(), user.getPassword());
+		return userService.userLogin(user.getUserName(), user.getPassword());
 	}
 	
 	@RequestMapping(value = "/getUsersByActiveIndicator/{active}", method = RequestMethod.GET, produces = "application/json")
