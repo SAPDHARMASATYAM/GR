@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gateranker.jpa.model.Subject;
 import com.gateranker.jpa.repository.SubjectRepository;
-import com.gateranker.model.Subject;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
@@ -35,6 +35,24 @@ public class SubjectServiceBean implements SubjectService {
 	@Override
 	public List<Subject> getAllSubjects() throws Exception{
 		return subjectRepository.findAll();
+	}
+
+	@Override
+	public List<Subject> getAllActiveSubjects() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Subject> getAllInActiveSubjects() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean enableOrDisableSubject(Subject subject, boolean flag) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

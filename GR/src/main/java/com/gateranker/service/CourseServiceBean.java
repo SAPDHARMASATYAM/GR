@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gateranker.jpa.model.Course;
 import com.gateranker.jpa.repository.CourseRepository;
-import com.gateranker.model.Course;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
@@ -29,17 +29,23 @@ public class CourseServiceBean implements CourseService {
 
 	@Override
 	public List<Course> getAllActiveCourses() {
-		return null;
-	}
-
-	@Override
-	public Boolean inActiveCourse(String courseName) {
-		return null;
+		return courseRepository.findAllByIsCourseActive(true);
 	}
 
 	@Override
 	public Course addCourse(Course course) {
 		return courseRepository.save(course);
+	}
+
+	@Override
+	public Course enableOrDisableCourse(Course course, boolean flag) {
+		course.setIsCourseActive(flag);
+		return courseRepository.saveAndFlush(course);
+	}
+
+	@Override
+	public List<Course> getAllInActiveCourses() {
+		return courseRepository.findAllByIsCourseActive(false);
 	}
 
 }

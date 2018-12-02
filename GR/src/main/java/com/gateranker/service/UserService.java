@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gateranker.model.User;
+import com.gateranker.jpa.model.User;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

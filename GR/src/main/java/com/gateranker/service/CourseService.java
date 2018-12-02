@@ -6,16 +6,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gateranker.model.Course;
+import com.gateranker.jpa.model.Course;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public interface CourseService {
 
 	public Course addCourse(Course course);
-	public Boolean isCourseAvailable(String courseName);
+	public Course enableOrDisableCourse(Course course, boolean flag);
 	public List<Course> getAllCourses();
+	public Boolean isCourseAvailable(String courseName);
 	public List<Course> getAllActiveCourses();
-	public Boolean inActiveCourse(String courseName);
-	
+	public List<Course> getAllInActiveCourses();	
 }

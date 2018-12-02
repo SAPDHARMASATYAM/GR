@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.gateranker.model.User;
+import com.gateranker.jpa.model.User;
 
 /**
  * @author satyanarayanakondaparthi
@@ -63,9 +63,8 @@ public class UserServiceTest {
 		user.setPassword("password");
 		user.setFirstName("Satyam");
 		user.setLastName("Kondaparthy");
-		user.setLastLoginAttempt(new Date());
-		user.setDatOfRegistration(new Date());
-		user.setNew(true);
+		user.setLastLoginDate(new Date());
+		user.setDateOfRegistration(new Date());
 		User registerUser = userService.registerUser(user);
 		System.out.println("Registration response ::::::::::: \n" + registerUser);
 		System.out.println("All Users Data ::::::::::::::::::::::::::: \n"+userService.getAllUsers());

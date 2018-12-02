@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gateranker.model.User;
+import com.gateranker.jpa.model.User;
 import com.gateranker.service.UserService;
 
 @RestController

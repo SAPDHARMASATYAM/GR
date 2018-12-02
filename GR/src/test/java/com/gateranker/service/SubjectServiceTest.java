@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.gateranker.model.Subject;
+import com.gateranker.jpa.model.Subject;
 
 /**
  * @author satyanarayanakondaparthi
@@ -44,8 +44,8 @@ public class SubjectServiceTest {
 	@Test
 	public void test() throws Exception {
 		Subject subject = new Subject();
-		subject.setDatOfSubjectRegistration(new Date());
-		subject.setSubjectActive(true);
+		subject.setDateOfSubjectRegistration(new Date());
+		subject.setIsSubjectActive(true);
 		subject.setSubjectName("Data structures");
 //		subject.setNew(true);
 		Subject addSubjectResponse;

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gateranker.jpa.model.User;
 import com.gateranker.jpa.repository.UserRepository;
-import com.gateranker.model.User;
 
 
 @Service
@@ -26,7 +26,7 @@ public class UserServiceBean implements UserService {
 
 	@Override
 	public List<User> getUsersByActiveIndicator(Boolean active){
-		return userRepository.findAllByIsUserActive(active);
+		return userRepository.findAll();
 	}
 	@Override
 	public int updatePasswordByEmailId(String password, String emailId) {

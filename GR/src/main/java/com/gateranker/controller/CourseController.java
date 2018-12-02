@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gateranker.model.Course;
+import com.gateranker.jpa.model.Course;
 import com.gateranker.service.CourseService;
 
 @RestController
