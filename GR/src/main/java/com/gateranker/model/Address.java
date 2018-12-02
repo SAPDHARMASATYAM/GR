@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 import org.springframework.data.domain.Persistable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the address database table.
@@ -46,6 +48,7 @@ public class Address implements Serializable, Persistable<String>  {
 	private String town;
 
 	@Transient
+	@JsonIgnore
 	private boolean isNew = false;
 	
 	public Address() {

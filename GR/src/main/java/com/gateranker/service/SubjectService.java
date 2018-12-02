@@ -12,6 +12,6 @@ import com.gateranker.model.Subject;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public interface SubjectService {
 	
-	public Subject addSubject(Subject subject);
-	public List<Subject> getAllSubjects();
+	public Subject addSubject(Subject subject)throws Exception;
+	public List<Subject> getAllSubjects()throws Exception;
 }

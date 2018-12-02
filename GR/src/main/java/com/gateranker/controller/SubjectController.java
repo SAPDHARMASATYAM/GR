@@ -25,7 +25,7 @@ public class SubjectController {
 	}
 	
 	@GetMapping("/getAllSubjects")
-	public List<Subject> getAllSubjects(){
+	public List<Subject> getAllSubjects() throws Exception{
 		return subjectService.getAllSubjects();
 	}
 }

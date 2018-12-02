@@ -2,7 +2,9 @@ package com.gateranker.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,12 +20,20 @@ public class SubjectServiceBean implements SubjectService {
 	private SubjectRepository subjectRepository;
 	
 	@Override
-	public Subject addSubject(Subject subject) {
-		return subjectRepository.save(subject);
+	public Subject addSubject(Subject subject) throws Exception {
+		Subject addSubjectResponse = null;
+		
+		try {
+			addSubjectResponse = subjectRepository.save(subject);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityViolationException("Duplicate data : " + e.getMessage());
+		}
+		return 	addSubjectResponse;
+		
 	}
 
 	@Override
-	public List<Subject> getAllSubjects() {
+	public List<Subject> getAllSubjects() throws Exception{
 		return subjectRepository.findAll();
 	}
 	

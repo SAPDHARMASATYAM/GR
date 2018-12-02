@@ -57,6 +57,7 @@ public class Topic implements Serializable, Persistable<String> {
 	private Date datOfTopicRegistration;
 
 	@Transient
+	@JsonIgnore
 	private boolean isNew = false;
 	
 	@Override

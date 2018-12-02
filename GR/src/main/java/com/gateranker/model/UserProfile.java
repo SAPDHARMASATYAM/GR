@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 import org.springframework.data.domain.Persistable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The persistent class for the user_profile database table.
  * 
@@ -47,6 +49,7 @@ public class UserProfile implements Serializable, Persistable<String> {
 	private String secretQuestionAnswer2;
 	
 	@Transient
+	@JsonIgnore
 	private boolean isNew = false;
 
 	public UserProfile() {

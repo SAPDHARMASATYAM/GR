@@ -14,6 +14,8 @@ import javax.persistence.Transient;
 
 import org.springframework.data.domain.Persistable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The persistent class for the subject database table.
  * 
@@ -40,6 +42,7 @@ public class Subject implements Serializable, Persistable<String> {
 	private Date datOfSubjectRegistration;
 
 	@Transient
+	@JsonIgnore
 	private boolean isNew = false;
 	
 	public Subject() {

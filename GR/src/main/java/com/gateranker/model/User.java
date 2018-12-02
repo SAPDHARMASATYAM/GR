@@ -14,6 +14,8 @@ import javax.persistence.Transient;
 
 import org.springframework.data.domain.Persistable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The persistent class for the user database table.
  * 
@@ -54,6 +56,7 @@ public class User implements Serializable, Persistable<String> {
 	private boolean isUserActive;
 
 	@Transient
+	@JsonIgnore
 	private boolean isNew = true;
 
 	public User() {

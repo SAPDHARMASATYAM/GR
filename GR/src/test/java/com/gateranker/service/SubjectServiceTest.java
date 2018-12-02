@@ -7,10 +7,19 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.gateranker.model.Subject;
 
+/**
+ * @author satyanarayanakondaparthi
+ *
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class SubjectServiceTest {
 
 	@Autowired
@@ -33,14 +42,20 @@ public class SubjectServiceTest {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws Exception {
 		Subject subject = new Subject();
 		subject.setDatOfSubjectRegistration(new Date());
 		subject.setSubjectActive(true);
 		subject.setSubjectName("Data structures");
-		subject.setNew(true);
-		Subject addSubjectResponse = subjectservice.addSubject(subject);
-		System.out.println("addSubjectResponse ::::: \n"+addSubjectResponse);
+//		subject.setNew(true);
+		Subject addSubjectResponse;
+		try {
+			addSubjectResponse = subjectservice.addSubject(subject);
+			System.out.println("addSubjectResponse ::::: \n"+addSubjectResponse);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		System.out.println("All Subjects ::::::::: \n " + subjectservice.getAllSubjects());
 		
 	}

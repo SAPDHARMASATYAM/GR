@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import org.springframework.data.domain.Persistable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the course database table.
@@ -30,6 +32,7 @@ public class Course implements Serializable, Persistable<String>  {
 	private Date datOfCourseRegistration;
 	
 	@Transient
+	@JsonIgnore
 	private boolean isNew = false;
 	
 	public Course() {
