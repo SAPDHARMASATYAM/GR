@@ -13,9 +13,9 @@ import com.gateranker.jpa.model.Course;
 public interface CourseService {
 
 	public Course addCourse(Course course);
-	public Course enableOrDisableCourse(Course course, boolean flag);
 	public List<Course> getAllCourses();
-	public Boolean isCourseAvailable(String courseName);
 	public List<Course> getAllActiveCourses();
-	public List<Course> getAllInActiveCourses();	
+	public List<Course> getAllInActiveCourses();
+	public Course enableOrDisableCourse(Course course, boolean flag);
+	public Boolean isCourseAvailable(String courseName);	
 }
