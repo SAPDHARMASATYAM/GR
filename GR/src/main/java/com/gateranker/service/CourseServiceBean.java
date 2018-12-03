@@ -1,6 +1,7 @@
 package com.gateranker.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,11 @@ public class CourseServiceBean implements CourseService {
 	@Override
 	public List<Course> getAllInActiveCourses() {
 		return courseRepository.findAllByIsCourseActive(false);
+	}
+
+	@Override
+	public Optional<Course> findById(String id) {
+		return courseRepository.findById(id);
 	}
 
 }

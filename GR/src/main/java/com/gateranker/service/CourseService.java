@@ -1,6 +1,7 @@
 package com.gateranker.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -17,5 +18,6 @@ public interface CourseService {
 	public List<Course> getAllActiveCourses();
 	public List<Course> getAllInActiveCourses();
 	public Course enableOrDisableCourse(Course course, boolean flag);
-	public Boolean isCourseAvailable(String courseName);	
+	public Boolean isCourseAvailable(String courseName);
+	public Optional<Course> findById(String id);	
 }

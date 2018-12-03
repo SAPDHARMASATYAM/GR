@@ -1,6 +1,7 @@
 package com.gateranker.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -15,8 +16,12 @@ public interface TopicService {
 	
 	public Topic addTopic(Topic topic);
 	public List<Topic> getAllTopicsBySubject(Subject subject);
-	public List<Topic> getAllActiveTopicsBySubject(Subject subject);
-	public List<Topic> getAllInActiveTopicsBySubject(Subject subject);
+	public List<Topic> getAllActiveTopicsBySubject(String subjectId);
+	public List<Topic> getAllInActiveTopicsBySubject(String subjectId);
 	public List<Topic> getTopicByTopicId(Topic topic);
 	public Boolean enableOrDisableTopic(Topic topic);
+	public List<Topic> getAllActiveTopics();
+	public List<Topic> getAllInActiveTopics();
+	public Topic getTopicById(String topicId);
+	public Optional<Topic> findById(int topicId);
 }
