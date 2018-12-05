@@ -23,8 +23,8 @@ public class TopicController {
 	TopicService topicService;
 
 	@GetMapping("topic/{topicId}")
-	public Topic getTopicById(@PathVariable(name = "topicId") String topicId) {
-		return topicService.getTopicById(topicId);
+	public Topic getTopicById(@PathVariable(name = "topicId") int topicId) {
+		return topicService.getTopicById(topicId).get();
 	}
 
 	@GetMapping("activeTopics")
@@ -54,13 +54,8 @@ public class TopicController {
 
 	@PutMapping("topic/{topicId}")
 	public Topic updateTopic(@PathVariable(name = "topicId") int topicId, @Valid @RequestBody Topic topic) {
-		return topicService.findById(topicId).map(t -> {
-
-			t.setTopicName(topic.getTopicName());
-			t.setVideoUrl(topic.getVideoUrl());
-			return topicService.addTopic(t);
-
-		}).orElseThrow(() -> new ResourceNotFoundException("topicId " + topicId + " not found"));
+		
+		return topicService.updateTopic(topicId, topic);
 	}
 
 }
