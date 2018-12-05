@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gateranker.jpa.exception.ResourceNotFoundException;
 import com.gateranker.jpa.model.Topic;
 import com.gateranker.service.TopicService;
 
@@ -54,7 +53,7 @@ public class TopicController {
 
 	@PutMapping("topic/{topicId}")
 	public Topic updateTopic(@PathVariable(name = "topicId") int topicId, @Valid @RequestBody Topic topic) {
-		
+
 		return topicService.updateTopic(topicId, topic);
 	}
 
