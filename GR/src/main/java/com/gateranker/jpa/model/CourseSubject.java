@@ -3,7 +3,9 @@ package com.gateranker.jpa.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
-
+/**
+ * @author Sap Dharma Satyam
+ */
 
 /**
  * The persistent class for the course_subject database table.

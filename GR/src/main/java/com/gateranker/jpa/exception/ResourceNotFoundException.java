@@ -2,7 +2,9 @@ package com.gateranker.jpa.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
+/**
+ * @author Sap Dharma Satyam
+ */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends RuntimeException {
     /**

@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gateranker.jpa.model.User;
 import com.gateranker.jpa.repository.UserRepository;
 
-
+/**
+ * @author Sap Dharma Satyam
+ */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class UserServiceBean implements UserService {

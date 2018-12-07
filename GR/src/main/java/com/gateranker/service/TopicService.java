@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gateranker.jpa.model.Topic;
-
+/**
+ * @author Sap Dharma Satyam
+ */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public interface TopicService {

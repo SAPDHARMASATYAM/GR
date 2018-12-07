@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gateranker.jpa.model.User;
 import com.gateranker.service.UserService;
-
+/**
+ * @author Sap Dharma Satyam
+ */
 @RestController
 @RequestMapping("user")
 public class UserController {

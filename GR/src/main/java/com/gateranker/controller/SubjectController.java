@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gateranker.jpa.model.Subject;
 import com.gateranker.service.SubjectService;
-
+/**
+ * @author Sap Dharma Satyam
+ */
 @RestController
 @RequestMapping("subject")
 public class SubjectController {

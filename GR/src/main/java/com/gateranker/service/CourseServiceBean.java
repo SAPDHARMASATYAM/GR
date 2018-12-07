@@ -10,14 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gateranker.jpa.model.Course;
 import com.gateranker.jpa.repository.CourseRepository;
-
+/**
+ * @author Sap Dharma Satyam
+ */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class CourseServiceBean implements CourseService {
 
 	@Autowired
 	CourseRepository courseRepository;
-	
+
 	@Override
 	public Boolean isCourseAvailable(String courseName) {
 		return courseRepository.existsById(courseName);

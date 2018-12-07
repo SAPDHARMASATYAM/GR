@@ -3,7 +3,9 @@ package com.gateranker.jpa.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
+/**
+ * @author Sap Dharma Satyam
+ */
 /**
  * The persistent class for the user_profile database table.
  * 

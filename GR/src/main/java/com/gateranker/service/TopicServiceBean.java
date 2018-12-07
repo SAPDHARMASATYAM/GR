@@ -15,11 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gateranker.jpa.exception.ResourceNotFoundException;
 import com.gateranker.jpa.model.Topic;
 import com.gateranker.jpa.repository.TopicRepository;
-
 /**
- * @author satyanarayana kondaparthi
- *
- *
+ * @author Sap Dharma Satyam
  */
 
 @Service

@@ -4,8 +4,9 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
-
 /**
+ * @author Sap Dharma Satyam
+ *
  * The persistent class for the user_course database table.
  * 
  */
@@ -112,5 +113,4 @@ public class UserCourse implements Serializable {
 				+ dateOfCourseAdded + ", isFullSubscription=" + isFullSubscription + ", isUserCourseActive="
 				+ isUserCourseActive + ", course=" + course + ", user=" + user + "]";
 	}
-
 }

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.gateranker.jpa.model.Topic;
 
 /**
- * @author satyanarayana kondaparthi
+ * @author Sap Dharma Satyam
  *
  */
 
@@ -21,7 +21,6 @@ public interface TopicRepository extends JpaRepository<Topic, Integer> {
 	List<Topic> findAllBySubject(String subjectId);
 
 	List<Topic> findAllBySubjectAndIsTopicActive(String subjectId, Boolean flag);
-	
-	
+
 	List<Topic> findAllByIsTopicActive(Boolean flag);
 }

@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gateranker.jpa.model.Topic;
 import com.gateranker.service.TopicService;
-
+/**
+ * @author Sap Dharma Satyam
+ */
 @RestController
 public class TopicController {
 

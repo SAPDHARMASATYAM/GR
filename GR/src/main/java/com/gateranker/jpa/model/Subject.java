@@ -4,7 +4,9 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * @author Sap Dharma Satyam
+ */
 
 /**
  * The persistent class for the subject database table.

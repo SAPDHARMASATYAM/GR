@@ -10,7 +10,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * @author Sap Dharma Satyam
+ */
 /**
  * The persistent class for the user database table.
  * 

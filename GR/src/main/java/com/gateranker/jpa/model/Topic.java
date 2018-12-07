@@ -16,7 +16,9 @@ import javax.persistence.Transient;
 import org.springframework.data.domain.Persistable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+/**
+ * @author Sap Dharma Satyam
+ */
 
 /**
  * The persistent class for the topic database table.

@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gateranker.jpa.exception.ResourceNotFoundException;
 import com.gateranker.jpa.model.Course;
 import com.gateranker.service.CourseService;
-
+/**
+ * @author Sap Dharma Satyam
+ */
 @RestController
 @RequestMapping("course")
 public class CourseController {

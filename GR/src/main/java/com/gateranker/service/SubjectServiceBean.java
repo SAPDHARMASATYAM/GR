@@ -12,7 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gateranker.jpa.exception.ResourceNotFoundException;
 import com.gateranker.jpa.model.Subject;
 import com.gateranker.jpa.repository.SubjectRepository;
-
+/**
+ * @author Sap Dharma Satyam
+ *
+ */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class SubjectServiceBean implements SubjectService {
