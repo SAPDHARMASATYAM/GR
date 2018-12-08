@@ -27,12 +27,14 @@ public class UserServiceTest {
 
 	@Autowired
 	private UserService userService;
+	static User user;
 	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		user =new User();
 	}
 
 	/**
@@ -47,6 +49,15 @@ public class UserServiceTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		
+		user.setUserName("satyam@mail.com");
+		user.setPassword("password");
+		user.setFirstName("Satyam");
+		user.setLastName("Kondaparthy");
+		user.setLastLoginDate(new Date());
+		user.setDateOfRegistration(new Date());
+		User registerUser = userService.registerUser(user);
+		System.err.println("Registration response ::::::::::: \n" + registerUser);
 	}
 
 	/**
@@ -54,20 +65,16 @@ public class UserServiceTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		userService.removeUserByUserName(user.getUserName());
+		System.err.println("user deleted successfully :::::::::::::::::::::::::::::::::");
 	}
 
 	@Test
 	public void test() {
-		User user =new User();
-		user.setUserName("abc@mail.com");
-		user.setPassword("password");
-		user.setFirstName("Satyam");
-		user.setLastName("Kondaparthy");
-		user.setLastLoginDate(new Date());
-		user.setDateOfRegistration(new Date());
-		User registerUser = userService.registerUser(user);
-		System.out.println("Registration response ::::::::::: \n" + registerUser);
-		System.out.println("All Users Data ::::::::::::::::::::::::::: \n"+userService.getAllUsers());
+		User user = new User();
+		user.setUserName("satyam@mail.com");
+		System.err.println("USer full name : " + userService.getUserFullNameByUserName(user.getUserName()));
+		System.err.println("All Users Data ::::::::::::::::::::::::::: \n"+userService.getAllUsers());
 	}
 
 }

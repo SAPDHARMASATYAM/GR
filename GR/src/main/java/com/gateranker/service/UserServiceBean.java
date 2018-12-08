@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gateranker.jpa.exception.ResourceNotFoundException;
+import com.gateranker.jpa.model.NamesOnly;
 import com.gateranker.jpa.model.User;
 import com.gateranker.jpa.repository.UserRepository;
 
@@ -27,18 +29,20 @@ public class UserServiceBean implements UserService {
 	}
 
 	@Override
-	public List<User> getUsersByActiveIndicator(Boolean active){
+	public List<User> getUsersByActiveIndicator(Boolean active) {
 		return userRepository.findAll();
 	}
+
 	@Override
 	public int updatePasswordByEmailId(String password, String emailId) {
-		return 0;//userRepository.updatePasswordByEmailId(password, emailId);
+		return 0;// userRepository.updatePasswordByEmailId(password, emailId);
 	}
 
 	@Override
 	public User getUserByEmailIdId(String emailId) {
 		return userRepository.findById(emailId).get();
 	}
+
 	@Override
 	public User registerUser(User user) {
 		return userRepository.save(user);
@@ -47,5 +51,23 @@ public class UserServiceBean implements UserService {
 	@Override
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
+	}
+
+	@Override
+	public String getUserFullNameByUserName(String userName) {
+		NamesOnly findByUserNameResponse = userRepository.findByUserName(userName);
+		if (null != findByUserNameResponse) {
+			return findByUserNameResponse.getFirstName() + " " + findByUserNameResponse.getLastName();
+		}
+		return null;
+	}
+
+	@Override
+	public Boolean removeUserByUserName(String userName) {
+		userRepository.findById(userName).map(user->{
+			userRepository.delete(user);
+			return true;
+		}).orElseThrow(() -> new ResourceNotFoundException("User Name " + userName + " not found") );
+		return false;
 	}
 }

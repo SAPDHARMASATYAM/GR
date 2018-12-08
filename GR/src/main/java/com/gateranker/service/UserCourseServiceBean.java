@@ -6,6 +6,9 @@ package com.gateranker.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gateranker.jpa.model.UserCourse;
 import com.gateranker.jpa.repository.UserCourseRepository;
@@ -14,6 +17,8 @@ import com.gateranker.jpa.repository.UserCourseRepository;
  * @author Sap Dharma Satyam
  *
  */
+@Service
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class UserCourseServiceBean implements UserCourseService {
 
 	@Autowired

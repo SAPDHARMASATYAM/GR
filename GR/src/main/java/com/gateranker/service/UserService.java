@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gateranker.jpa.model.User;
+
 /**
  * @author Sap Dharma Satyam
  */
@@ -14,16 +15,20 @@ import com.gateranker.jpa.model.User;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public interface UserService {
 
-	User userLogin(String emailId, String password);
+	public User userLogin(String emailId, String password);
 
-	List<User> getUsersByActiveIndicator(Boolean active);
+	public List<User> getUsersByActiveIndicator(Boolean active);
 
-	int updatePasswordByEmailId(String password, String emailId);
+	public int updatePasswordByEmailId(String password, String emailId);
 
-	User getUserByEmailIdId(String emailId);
+	public User getUserByEmailIdId(String emailId);
 
-	User registerUser(User user);
-	
+	public User registerUser(User user);
+
 	public List<User> getAllUsers();
+
+	public String getUserFullNameByUserName(String userName);
+
+	public Boolean removeUserByUserName(String userName);
 
 }
