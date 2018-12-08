@@ -1,4 +1,7 @@
-package com.gateranker.service;
+package com.gateranker.service.impl;
+
+import com.gateranker.service.UserProfileService;
+
 /**
  * @author Sap Dharma Satyam
  */

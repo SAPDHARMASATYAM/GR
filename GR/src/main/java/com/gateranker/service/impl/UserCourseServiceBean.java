@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.gateranker.service;
+package com.gateranker.service.impl;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gateranker.jpa.model.UserCourse;
 import com.gateranker.jpa.repository.UserCourseRepository;
+import com.gateranker.service.UserCourseService;
 
 /**
  * @author Sap Dharma Satyam

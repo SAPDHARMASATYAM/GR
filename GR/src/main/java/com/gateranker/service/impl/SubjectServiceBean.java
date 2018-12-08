@@ -1,4 +1,4 @@
-package com.gateranker.service;
+package com.gateranker.service.impl;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gateranker.jpa.exception.ResourceNotFoundException;
 import com.gateranker.jpa.model.Subject;
 import com.gateranker.jpa.repository.SubjectRepository;
+import com.gateranker.service.SubjectService;
 /**
  * @author Sap Dharma Satyam
  *

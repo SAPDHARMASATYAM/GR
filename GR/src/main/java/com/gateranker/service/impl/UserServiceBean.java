@@ -1,4 +1,4 @@
-package com.gateranker.service;
+package com.gateranker.service.impl;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import com.gateranker.jpa.exception.ResourceNotFoundException;
 import com.gateranker.jpa.model.NamesOnly;
 import com.gateranker.jpa.model.User;
 import com.gateranker.jpa.repository.UserRepository;
+import com.gateranker.service.UserService;
 
 /**
  * @author Sap Dharma Satyam

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.gateranker.service;
+package com.gateranker.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gateranker.jpa.exception.ResourceNotFoundException;
 import com.gateranker.jpa.model.Topic;
 import com.gateranker.jpa.repository.TopicRepository;
+import com.gateranker.service.TopicService;
 /**
  * @author Sap Dharma Satyam
  */
