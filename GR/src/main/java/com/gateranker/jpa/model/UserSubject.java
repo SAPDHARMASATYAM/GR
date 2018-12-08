@@ -6,6 +6,7 @@ import java.util.Date;
 /**
  * @author Sap Dharma Satyam
  */
+import java.util.UUID;
 
 /**
  * The persistent class for the user_subject database table.
@@ -19,8 +20,8 @@ public class UserSubject implements Serializable {
 
 
 	@Id
-    @Column(name = "ID")
-    private Long id; // The row number!
+	@Column(columnDefinition = "BINARY(16)")
+	private UUID id;// The row number!
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date_of_subject_subscription")
@@ -74,11 +75,11 @@ public class UserSubject implements Serializable {
 		this.subject = subject;
 	}
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
