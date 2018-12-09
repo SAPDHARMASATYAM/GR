@@ -1,5 +1,6 @@
 package com.gateranker.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,9 @@ public class UserController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST, produces = "application/json")
 	public User register(@RequestBody User user) throws Exception {
+		user.setDateOfRegistration(new Date());
+		user.setLastLoginDate(new Date());
+		user.setInvalidAttemptCount(0);
 		return userService.registerUser(user);
 	}
 }
