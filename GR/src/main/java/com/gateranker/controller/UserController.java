@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +25,11 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/getUserByUserId/{emailId}", method = RequestMethod.GET, produces = "application/json")
-	public User getUserByUserId(@PathVariable(name="emailId") String emailId) throws Exception {
-		return userService.getUserByEmailIdId(emailId);
+	public ResponseEntity<User> getUserByUserId(@PathVariable(name="emailId") String emailId) throws Exception {
+		
+		 User userByEmailIdIdResponse = userService.getUserByEmailIdId(emailId);
+		 
+		 return null!=userByEmailIdIdResponse? new ResponseEntity<User>(userByEmailIdIdResponse, HttpStatus.OK):new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 	}
 	
 	@RequestMapping(value = "/getAllUsers", method = RequestMethod.GET, produces = "application/json")

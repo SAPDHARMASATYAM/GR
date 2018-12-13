@@ -18,52 +18,53 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable , Persistable<String>{
+@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+public class User implements Serializable, Persistable<String> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="user_name")
+	@Column(name = "user_name")
 	private String userName;
-
+	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="date_of_registration")
+	@Column(name = "date_of_registration")
 	private Date dateOfRegistration;
 
-	@Column(name="first_name")
+	@Column(name = "first_name")
 	private String firstName;
-
-	@Column(name="invalid_attempt_count")
+	@JsonIgnore
+	@Column(name = "invalid_attempt_count")
 	private int invalidAttemptCount;
 
-	@Column(name="is_user_active")
+	@Column(name = "is_user_active")
 	private boolean isUserActive;
 
+	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="last_login_date")
+	@Column(name = "last_login_date")
 	private Date lastLoginDate;
 
-	@Column(name="last_name")
+	@Column(name = "last_name")
 	private String lastName;
-
+	@JsonIgnore
 	private String password;
-
-	//bi-directional many-to-one association to UserCourse
-	@OneToMany(mappedBy="user")
+	@JsonIgnore
+	// bi-directional many-to-one association to UserCourse
+	@OneToMany(mappedBy = "user")
 	private List<UserCourse> userCourses;
-
-	//bi-directional many-to-one association to UserProfile
-	@OneToMany(mappedBy="user")
+	@JsonIgnore
+	// bi-directional many-to-one association to UserProfile
+	@OneToMany(mappedBy = "user")
 	private List<UserProfile> userProfiles;
-
-	//bi-directional many-to-one association to UserSubject
-	@OneToMany(mappedBy="user")
+	@JsonIgnore
+	// bi-directional many-to-one association to UserSubject
+	@OneToMany(mappedBy = "user")
 	private List<UserSubject> userSubjects;
 
 	@Transient
 	@JsonIgnore
 	private boolean isNew = true;
-	
+
 	public User() {
 	}
 
@@ -98,7 +99,6 @@ public class User implements Serializable , Persistable<String>{
 	public void setInvalidAttemptCount(int invalidAttemptCount) {
 		this.invalidAttemptCount = invalidAttemptCount;
 	}
-
 
 	public boolean isUserActive() {
 		return isUserActive;
