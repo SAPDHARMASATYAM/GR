@@ -4,16 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gateranker.Constants;
+import com.gateranker.dto.Response;
 import com.gateranker.jpa.model.User;
 import com.gateranker.service.UserService;
+
 /**
  * @author Sap Dharma Satyam
  */
@@ -25,32 +26,56 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/getUserByUserId/{emailId}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<User> getUserByUserId(@PathVariable(name="emailId") String emailId) throws Exception {
-		
-		 User userByEmailIdIdResponse = userService.getUserByEmailIdId(emailId);
-		 
-		 return null!=userByEmailIdIdResponse? new ResponseEntity<User>(userByEmailIdIdResponse, HttpStatus.OK):new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+	public Response getUserByUserId(@PathVariable(name = "emailId") String emailId) throws Exception {
+		Response response = new Response();
+		User userByEmailIdIdResponse = userService.getUserByEmailIdId(emailId);
+		response.setResponseStatus(Constants.SUCCESS);
+		response.setResponseMessage("User found by given mailid");
+		response.setResponseContent(userByEmailIdIdResponse);
+		return response;
 	}
-	
+
 	@RequestMapping(value = "/getAllUsers", method = RequestMethod.GET, produces = "application/json")
-	public List<User> getAllUsers() throws Exception {
-		return userService.getAllUsers();
+	public Response getAllUsers() throws Exception {
+
+		List<User> allUsers = userService.getAllUsers();
+		Response response = new Response();
+		response.setResponseMessage("User found by given mailid");
+		response.setResponseStatus(Constants.SUCCESS);
+		response.setResponseContent(allUsers);
+		return response;
+
 	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
-	public User login(@RequestBody User user) throws Exception {
-		return userService.userLogin(user.getUserName(), user.getPassword());
+	public Response login(@RequestBody User user) throws Exception {
+		User userLoginResponse = userService.userLogin(user.getUserName(), user.getPassword());
+		Response response = new Response();
+		response.setResponseMessage("Login successful");
+		response.setResponseStatus(Constants.SUCCESS);
+		response.setResponseContent(userLoginResponse);
+		return response;
 	}
-	
+
 	@RequestMapping(value = "/getUsersByActiveIndicator/{active}", method = RequestMethod.GET, produces = "application/json")
-	public List<User> getUsersByActiveIndicator(@PathVariable(name="active") Boolean active) throws Exception {
-		return userService.getUsersByActiveIndicator(active);
+	public Response getUsersByActiveIndicator(@PathVariable(name = "active") Boolean active) throws Exception {
+		List<User> usersByActiveIndicator = userService.getUsersByActiveIndicator(active);
+		Response response = new Response();
+		response.setResponseMessage("Login successful");
+		response.setResponseStatus(Constants.SUCCESS);
+		response.setResponseContent(usersByActiveIndicator);
+		return response;
 	}
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.POST, produces = "application/json")
-	public User register(@RequestBody User user) throws Exception {
+	public Response register(@RequestBody User user) throws Exception {
+		Response response = new Response();
 		user.setDateOfRegistration(new Date());
 		user.setLastLoginDate(new Date());
 		user.setInvalidAttemptCount(0);
-		return userService.registerUser(user);
+		response.setResponseStatus(Constants.SUCCESS);
+		response.setResponseMessage("Registration Successfull");
+		response.setResponseContent(user);
+		return response;
 	}
 }

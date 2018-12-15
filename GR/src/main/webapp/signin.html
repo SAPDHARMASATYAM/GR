@@ -35,7 +35,7 @@
         <script src="js/vendor/html5shiv.min.js"></script>
         <script src="js/vendor/respond.min.js"></script>
     <![endif]-->
-
+	<script src="./js/app/user.js"></script>
 </head>
 <body>  
 
@@ -125,9 +125,9 @@
 <!--                                 <p>..</p> -->
                             </div><!-- end title -->
                             
-                            <form class="big-contact-form" role="search">
-                                <input type="email" class="form-control" placeholder="Enter Email-id" required>
-                                <input type="Password" class="form-control" placeholder="Enter Password" required><br>
+                            <form class="big-contact-form"  action="javascript:login();" method="post">
+                                <input type="email" name="userName" id="userName" class="form-control" placeholder="Enter Email-id" required>
+                                <input type="Password"  name="pwd" id="pwd" class="form-control" placeholder="Enter Password" required><br>
                                <!-- <textarea class="form-control" placeholder="Message goes here.."></textarea>-->
                                 <button type="submit" class="btn btn-primary">Login</button>
 								

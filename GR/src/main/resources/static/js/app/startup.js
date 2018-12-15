@@ -3,7 +3,7 @@
  */
 function getAvailableCourses() {
 
-	alert("getAvailableCourses() called");
+	//alert("getAvailableCourses() called");
 	try {
 		$.ajax({
 			url : "./course/getAllActiveCourses",
@@ -15,16 +15,16 @@ function getAvailableCourses() {
 			success : function(data) {
 				var respJSONString = JSON.stringify(data);
 				console.log(respJSONString);
-
+				
 			},
 
 			error : function(data, status, er) {
 				alert("error: " + JSON.stringify(data) + " status: " + status + " er:" + er);
-				window.location="./index.html"
+				//window.location="./index.html"
 			}
 		});
 	} catch (ex) {
 		alert(ex);
-		window.location="./index.html"
+		//window.location="./index.html"
 	}
 }

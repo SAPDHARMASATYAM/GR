@@ -35,7 +35,7 @@ public class User implements Serializable, Persistable<String> {
 	@JsonIgnore
 	@Column(name = "invalid_attempt_count")
 	private int invalidAttemptCount;
-
+	@JsonIgnore
 	@Column(name = "is_user_active")
 	private boolean isUserActive;
 
@@ -46,7 +46,6 @@ public class User implements Serializable, Persistable<String> {
 
 	@Column(name = "last_name")
 	private String lastName;
-	@JsonIgnore
 	private String password;
 	@JsonIgnore
 	// bi-directional many-to-one association to UserCourse
@@ -203,11 +202,13 @@ public class User implements Serializable, Persistable<String> {
 	}
 
 	@Override
+	@JsonIgnore
 	public String getId() {
 		return this.getUserName();
 	}
 
 	@Override
+	@JsonIgnore
 	public boolean isNew() {
 		return this.isNew;
 	}
@@ -215,9 +216,9 @@ public class User implements Serializable, Persistable<String> {
 	@Override
 	public String toString() {
 		return "User [userName=" + userName + ", dateOfRegistration=" + dateOfRegistration + ", firstName=" + firstName
-				+ ", invalidAttemptCount=" + invalidAttemptCount + ", isUserActive=" + isUserActive + ", lastLoginDate="
-				+ lastLoginDate + ", lastName=" + lastName + ", password=" + password + ", userCourses=" + userCourses
-				+ ", userProfiles=" + userProfiles + ", userSubjects=" + userSubjects + ", isNew=" + isNew + "]";
+				+ ", invalidAttemptCount=" + invalidAttemptCount + ", lastLoginDate=" + lastLoginDate + ", lastName="
+				+ lastName + "]";
 	}
+
 
 }
