@@ -26,12 +26,25 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/getUserByUserId/{emailId}", method = RequestMethod.GET, produces = "application/json")
-	public Response getUserByUserId(@PathVariable(name = "emailId") String emailId) throws Exception {
+	public Response getUserByUserId(@PathVariable(name = "emailId") String emailId) {
 		Response response = new Response();
-		User userByEmailIdIdResponse = userService.getUserByEmailIdId(emailId);
-		response.setResponseStatus(Constants.SUCCESS);
-		response.setResponseMessage("User found by given mailid");
-		response.setResponseContent(userByEmailIdIdResponse);
+		try {
+			User userByEmailIdIdResponse = userService.getUserByEmailIdId(emailId);
+			if(null != userByEmailIdIdResponse) {
+			response.setResponseStatus(Constants.SUCCESS);
+			response.setResponseMessage("User found by given mailid");
+			response.setResponseContent(userByEmailIdIdResponse);
+			}else {
+				response.setResponseStatus(Constants.FAIL);
+				response.setResponseMessage("User not fout with given user name and password");
+				response.setResponseContent(userByEmailIdIdResponse);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.setResponseStatus(Constants.ERROR);
+			response.setResponseMessage(Constants.SERVICE_ERROR);
+			response.setResponseContent(null);
+		}
 		return response;
 	}
 
