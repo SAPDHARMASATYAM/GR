@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+
+</style>
+<link rel="stylesheet" href="../css/sm.css">
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="color:white;">&times;</a>
+  <button class="collapsible">Topic</button>
+    <div class="content">
+      <a href="javascript:void(0)" onclick="loadMenuForm('addTopic')">Add Topic</a>
+      <a href="javascript:void(0)" onclick="loadMenuForm('modifyTopic')">Modify Topic</a>
+      <a href="javascript:void(0)" onclick="loadMenuForm('removeTopic')">Remove Topic</a>
+      <a href="javascript:void(0)" onclick="loadMenuForm('eodTopic')">Ebable/Disable Topic</a>
+    </div>
+  <button class="collapsible">Subject</button>
+    <div class="content">
+    <a href="javascript:void(0)" onclick="loadMenuForm('addSubject')">Add Subject</a>
+    <a href="javascript:void(0)" onclick="loadMenuForm('modifySubject')">Modify Subject</a>
+    <a href="javascript:void(0)" onclick="loadMenuForm('removeSubject')">Remove Subject</a>
+    <a href="javascript:void(0)" onclick="loadMenuForm('eodSubject')">Ebable/Disable Subject</a>
+    </div>
+  <button class="collapsible">Course</button>
+    <div class="content">
+    <a href="javascript:void(0)" onclick="loadMenuForm('addCourse')">Add Course</a>
+    <a href="javascript:void(0)" onclick="loadMenuForm('modifyCourse')">Modify Course</a>
+    <a href="javascript:void(0)" onclick="loadMenuForm('removeCourse')">Remove Course</a>
+    <a href="javascript:void(0)" onclick="loadMenuForm('eodCourse')">Ebable/Disable Course</a>
+    </div>
+</div>
+
+<div id="main">
+<!--   <p>Click on &#9776; to see control menu.</p> -->
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span><span style="font-size:30px;"> Admin</span>
+
+</div>
+<div id="containerDiv" style="height:500px; width:800px; margin-left: 250px;">
+
+</div>
+
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+
+
+	function loadMenuForm(actionName) {
+
+		var htmlFileName = "../admin/";
+		
+		switch (actionName) {
+		case "addTopic":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "modifyTopic":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "removeTopic":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "eodSubject":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "addSubject":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "modifySubject":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "removeSubject":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "eodSubject":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "addCourse":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "modifyCourse":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "removeCourse":
+			console.log("Triggered action is : " + actionName);
+			break;
+		case "eodCourse":
+			console.log("Triggered action is : " + actionName);
+			break;
+
+		default:
+			console.log("Triggered action is : " + actionName);
+			break;
+		}
+		
+		htmlFileName +="addCourse.html";
+		$('#containerDiv').load(htmlFileName);
+
+	}
+</script>
+<script>
+
+	var coll = document.getElementsByClassName("collapsible");
+	var i;
+
+	for (i = 0; i < coll.length; i++) {
+		coll[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.maxHeight) {
+				content.style.maxHeight = null;
+			} else {
+				content.style.maxHeight = content.scrollHeight + "px";
+			}
+		});
+	}
+</script>
+</body>
+</html>

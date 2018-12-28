@@ -1,10 +1,8 @@
 package com.gateranker.service.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,11 +41,11 @@ public class SubjectServiceBean implements SubjectService {
 	}
 
 	@Override
-	public Boolean enableOrDisableSubject(String subjectId, boolean flag) {
+	public Subject enableOrDisableSubject(String subjectId, boolean flag) {
 		return subjectRepository.findById(subjectId).map(sub -> {
 			sub.setIsSubjectActive(flag);
 			Subject updateResponse = subjectRepository.save(sub);
-			return (updateResponse != null) ? true : false;
+			return (updateResponse != null) ? updateResponse : null;
 		}).orElseThrow(() -> new ResourceNotFoundException("subjectId " + subjectId + " not found"));
 	}
 
@@ -62,10 +60,10 @@ public class SubjectServiceBean implements SubjectService {
 	}
 
 	@Override
-	public ResponseEntity<?> removeSubject(String subjectId) {
-		return subjectRepository.findById(subjectId).map(subject -> {
+	public Boolean removeSubject(String subjectId) {
+		return  subjectRepository.findById(subjectId).map(subject -> {
 			subjectRepository.delete(subject);
-			return ResponseEntity.ok().build();
+			return true;
 		}).orElseThrow(() -> new ResourceNotFoundException("subject " + subjectId + " not found"));
 	}
 

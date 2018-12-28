@@ -42,7 +42,10 @@ function login() {
 		user.password = $('#pwd').val();
 
 		console.log($('#userName').val() + " : " + $('#pwd').val() +" : " + JSON.stringify(user));
-
+		if(user.userName == "admin@mail.com" && user.password == "admin" ){
+			console.log("Login type is admin");
+			window.location="./admin/adminHome.html";
+		}
 		$.ajax({
 			url : "./user/login",
 			type : 'POST',

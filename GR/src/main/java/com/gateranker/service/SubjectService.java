@@ -2,7 +2,6 @@ package com.gateranker.service;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,11 +18,11 @@ public interface SubjectService {
 
 	public List<Subject> getAllSubjects() throws Exception;
 
-	public Boolean enableOrDisableSubject(String subject, boolean flag);
+	public Subject enableOrDisableSubject(String subject, boolean flag);
 
 	public Subject updateSubject(String subjectId, Subject subject);
 
-	public ResponseEntity<?> removeSubject(String subjectId);
+	public Boolean removeSubject(String subjectId);
 
 	public Subject getSubjectById(String subjectId);
 

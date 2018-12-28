@@ -14,7 +14,15 @@ function getAvailableCourses() {
 
 			success : function(data) {
 				var respJSONString = JSON.stringify(data);
-				console.log(respJSONString);
+				//console.log(respJSONString);
+				var jsonObj = JSON.parse(respJSONString);
+				console.log(jsonObj.responseStatus + " : " + jsonObj.responseMessage);
+				if(jsonObj.responseStatus == "success"){
+					$.each(data.responseContent, function(idx, obj) {
+						console.log("Content : " + obj.courseName);
+					})
+					
+				}
 				
 			},
 
