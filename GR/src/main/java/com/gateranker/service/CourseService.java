@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gateranker.jpa.model.Course;
+
 /**
  * @author Sap Dharma Satyam
  */
@@ -19,9 +20,7 @@ public interface CourseService {
 
 	public List<Course> getAllCourses();
 
-	public List<Course> getAllActiveCourses();
-
-	public List<Course> getAllInActiveCourses();
+	public List<Course> getAllCoursesByActiveIndicator(boolean flag);
 
 	public Course enableOrDisableCourse(Course course, boolean flag);
 

@@ -56,7 +56,7 @@ public class CourseController {
 	public Response getAllActiveCourses() throws Exception {
 		Response response = new Response();
 		try {
-			List<Course> allActiveCourses = courseService.getAllActiveCourses();
+			List<Course> allActiveCourses = courseService.getAllCoursesByActiveIndicator(true);
 			if(null != allActiveCourses) {
 				response.setResponseStatus(Constants.SUCCESS);
 				response.setResponseMessage("Available Active courses count : " + allActiveCourses.size());
@@ -80,7 +80,7 @@ public class CourseController {
 	public Response getAllInActiveCourses() throws Exception {
 		Response response = new Response();
 		try {
-			List<Course> allInActiveCourses = courseService.getAllInActiveCourses();
+			List<Course> allInActiveCourses = courseService.getAllCoursesByActiveIndicator(false);
 			if(null != allInActiveCourses) {
 				response.setResponseStatus(Constants.SUCCESS);
 				response.setResponseMessage("Available InActive courses count : " + allInActiveCourses.size());

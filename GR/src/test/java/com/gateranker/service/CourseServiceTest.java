@@ -57,9 +57,9 @@ public class CourseServiceTest {
 		addCourseResponse = courseService.addCourse(course2);
 		System.out.println("addCourseResponse ::: \n"+addCourseResponse);
 		System.err.println("All courses :::::::: \n "+ courseService.getAllCourses());
-		List<Course> allActiveCourses = courseService.getAllActiveCourses();
+		List<Course> allActiveCourses = courseService.getAllCoursesByActiveIndicator(true);
 		System.err.println("All Active courses :::::::: \n "+ allActiveCourses);
-		 List<Course> allInActiveCourses = courseService.getAllInActiveCourses();
+		 List<Course> allInActiveCourses = courseService.getAllCoursesByActiveIndicator(false);
 		System.err.println("All InActive courses :::::::: \n "+allInActiveCourses);
 		for(Course c:allActiveCourses) {
 			courseService.enableOrDisableCourse(c, false);
@@ -67,9 +67,9 @@ public class CourseServiceTest {
 		for(Course c: allInActiveCourses) {
 			courseService.enableOrDisableCourse(c, true);
 		}
-		allActiveCourses = courseService.getAllActiveCourses();
+		allActiveCourses = courseService.getAllCoursesByActiveIndicator(true);
 		System.err.println("All Active courses :::::::: \n "+ allActiveCourses);
-		allInActiveCourses = courseService.getAllInActiveCourses();
+		allInActiveCourses = courseService.getAllCoursesByActiveIndicator(false);
 		System.err.println("All InActive courses :::::::: \n "+allInActiveCourses);
 	}
 

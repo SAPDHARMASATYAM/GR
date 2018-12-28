@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gateranker.jpa.model.Course;
 import com.gateranker.jpa.repository.CourseRepository;
 import com.gateranker.service.CourseService;
+
 /**
  * @author Sap Dharma Satyam
  */
@@ -32,11 +33,6 @@ public class CourseServiceBean implements CourseService {
 	}
 
 	@Override
-	public List<Course> getAllActiveCourses() {
-		return courseRepository.findAllByIsCourseActive(true);
-	}
-
-	@Override
 	public Course addCourse(Course course) {
 		return courseRepository.save(course);
 	}
@@ -48,13 +44,13 @@ public class CourseServiceBean implements CourseService {
 	}
 
 	@Override
-	public List<Course> getAllInActiveCourses() {
-		return courseRepository.findAllByIsCourseActive(false);
+	public Optional<Course> findById(String id) {
+		return courseRepository.findById(id);
 	}
 
 	@Override
-	public Optional<Course> findById(String id) {
-		return courseRepository.findById(id);
+	public List<Course> getAllCoursesByActiveIndicator(boolean flag) {
+		return courseRepository.findAllByIsCourseActive(flag);
 	}
 
 }

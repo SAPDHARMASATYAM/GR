@@ -69,47 +69,58 @@ function closeNav() {
 		switch (actionName) {
 		case "addTopic":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="addCourse.html";
 			break;
 		case "modifyTopic":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="addCourse.html";
 			break;
 		case "removeTopic":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="addCourse.html";
 			break;
 		case "eodSubject":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="addCourse.html";
 			break;
 		case "addSubject":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="addCourse.html";
 			break;
 		case "modifySubject":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="addCourse.html";
 			break;
 		case "removeSubject":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="addCourse.html";
 			break;
 		case "eodSubject":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="addCourse.html";
 			break;
 		case "addCourse":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="addCourse.html";
 			break;
 		case "modifyCourse":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="modifyCourse.html";
 			break;
 		case "removeCourse":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="removeCourse.html";
 			break;
 		case "eodCourse":
 			console.log("Triggered action is : " + actionName);
+			htmlFileName +="enableOrDisableCourse.html";
 			break;
 
 		default:
 			console.log("Triggered action is : " + actionName);
+		htmlFileName +="addCourse.html";
 			break;
 		}
-		
-		htmlFileName +="addCourse.html";
 		$('#containerDiv').load(htmlFileName);
 
 	}
