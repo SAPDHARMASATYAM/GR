@@ -1,14 +1,14 @@
 function addCourse() {
 
-	console.log("Login called");
+	alert("addCourse called");
 	try {
 		var course = new Object();
-		course.userName = $('#userName').val();
-		course.password = $('#pwd').val();
+		course.courseName = $('#courseName').val();
+		course.isCourseActive = $('#isCourseActive').val();
 
 		console.log();
 		$.ajax({
-			url : "./course/addCourse",
+			url : "../course/addCourse",
 			type : 'POST',
 			dataType : 'json',
 			data : JSON.stringify(course),
@@ -28,10 +28,9 @@ function addCourse() {
 					if (typeof(Storage) !== "undefined") {
 						// Store
 						var responseObject =JSON.parse(JSON.stringify(data.responseContent));
-						sessionStorage.setItem("emailId", responseObject.userName);
-						console.log("userName stored in session storage. " + sessionStorage.getItem("userName"));
 					} else {console.log("Sorry, your browser does not support Web Storage...");}
 				}else{}
+				$('#addCourseDiv').hide();
 			},
 
 			error : function(data, status, er) {

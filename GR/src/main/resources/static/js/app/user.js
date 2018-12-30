@@ -45,45 +45,46 @@ function login() {
 		if(user.userName == "admin@mail.com" && user.password == "admin" ){
 			console.log("Login type is admin");
 			window.location="./admin/adminHome.html";
-		}
-		$.ajax({
-			url : "./user/login",
-			type : 'POST',
-			dataType : 'json',
-			data : JSON.stringify(user),
-			contentType : 'application/json',
-			mimeType : 'application/json',
+		}else{
+			$.ajax({
+				url : "./user/login",
+				type : 'POST',
+				dataType : 'json',
+				data : JSON.stringify(user),
+				contentType : 'application/json',
+				mimeType : 'application/json',
 
-			success : function(data) {
-				var respJSONString = JSON.stringify(data);
-				console.log(respJSONString);
-				
-				var jsonObj = JSON.parse(respJSONString);
-				console.log(jsonObj.responseStatus + " : " + jsonObj.responseMessage);
-				alert(jsonObj.responseMessage);
-				
-				if(jsonObj.responseStatus == "success"){
-					// Check browser support for session storage
-					if (typeof(Storage) !== "undefined") {
-						// Store
-						var responseObject =JSON.parse(JSON.stringify(data.responseContent));
-						sessionStorage.setItem("emailId", responseObject.userName);
-						console.log("userName stored in session storage. " + sessionStorage.getItem("userName"));
-					} else {
-						console.log("Sorry, your browser does not support Web Storage...");
+				success : function(data) {
+					var respJSONString = JSON.stringify(data);
+					console.log(respJSONString);
+
+					var jsonObj = JSON.parse(respJSONString);
+					console.log(jsonObj.responseStatus + " : " + jsonObj.responseMessage);
+					alert(jsonObj.responseMessage);
+
+					if(jsonObj.responseStatus == "success"){
+						// Check browser support for session storage
+						if (typeof(Storage) !== "undefined") {
+							// Store
+							var responseObject =JSON.parse(JSON.stringify(data.responseContent));
+							sessionStorage.setItem("emailId", responseObject.userName);
+							console.log("userName stored in session storage. " + sessionStorage.getItem("userName"));
+						} else {
+							console.log("Sorry, your browser does not support Web Storage...");
+						}
+						window.location="./Course_Display.html"
+					}else{
+
 					}
-					window.location="./Course_Display.html"
-				}else{
-					
+
+				},
+
+				error : function(data, status, er) {
+					alert("error: " + JSON.stringify(data) + " status: " + status + " er:" + er);
+					window.location="./index.html";
 				}
-
-			},
-
-			error : function(data, status, er) {
-				alert("error: " + JSON.stringify(data) + " status: " + status + " er:" + er);
-				window.location="./index.html";
-			}
-		});
+			});
+		}
 	} catch (ex) {
 		alert(ex);
 		window.location="./index.html";

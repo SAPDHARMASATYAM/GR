@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+ 		<!-- Basic -->
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <!-- Mobile Meta -->
+	    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	    <!-- Site Meta -->
+	    <meta name="keywords" content="">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <!-- Site Icons -->
+	    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+	    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+	    <!-- Google Fonts -->
+	    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet"> 
+	    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i" rel="stylesheet"> 
+	    <!-- Custom & Default Styles -->
+	    <link rel="stylesheet" href="../css/bootstrap.min.css">
+	    <link rel="stylesheet" href="../css/font-awesome.min.css">
+	    <link rel="stylesheet" href="../css/carousel.css">
+	    <link rel="stylesheet" href="../css/animate.css">
+	    <link rel="stylesheet" href="../style.css">
+	    <!-- jQuery Files -->
+	    <script src="../js/jquery.min.js"></script>
+	    <script src="../js/bootstrap.min.js"></script>
+	    <script src="../js/animate.js"></script>
+	    <script src="../js/custom.js"></script>
+		<script src="../js/app/course.js"></script>
+		
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -36,6 +64,7 @@ body {
     <a href="javascript:void(0)" onclick="loadMenuForm('modifyCourse')">Modify Course</a>
     <a href="javascript:void(0)" onclick="loadMenuForm('removeCourse')">Remove Course</a>
     <a href="javascript:void(0)" onclick="loadMenuForm('eodCourse')">Ebable/Disable Course</a>
+    <a href="javascript:void(0)"></a>
     </div>
 </div>
 
@@ -44,8 +73,91 @@ body {
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span><span style="font-size:30px;"> Admin</span>
 
 </div>
-<div id="containerDiv" style="height:500px; width:800px; margin-left: 250px;">
-
+<div id="containerDiv" style="min-height:500px; width:800px; margin-left: 250px;margin-top:100px;">
+		  <div>
+	        <section class="section gb nopadtop">
+	            <div class="container">
+	                <div class="boxed boxedp4" style="min-height:500px;">
+	                
+	                    <div class="row" id="addCourseDivRow" style="display: none;">
+	                        <div class="col-md-6 col-md-offset-3">
+	                            <div class="section-title text-center"><br>
+	                                <h3>Add Course</h3>
+	                                <p></p>
+	                            </div><!-- end title -->
+	                            <form class="big-contact-form"  action="javascript:addCourse();" method="post">
+	                                <input type="text" name="courseName" id="courseName" class="form-control" placeholder="Enter Course Name" required>
+	                                <select id="isCourseActive" name="isCourseActive" class="form-control" required="required">
+	                                	<option value="false"> In Active </option>
+	                                	<option value="true"> Active </option>
+	                                </select>
+	                                <br>
+	                                <button type="submit" class="btn btn-primary">Add Course</button>
+	                            </form>
+	                        </div><!-- end col -->
+	                    </div><!-- end row -->
+	                    
+	                    <div class="row"  style="display: none;" id="modifyCourseDivRow" >
+	                        <div class="col-md-6 col-md-offset-3">
+	                            <div class="section-title text-center"><br>
+	                                <h3>Modify Course</h3>
+	                                <p></p>
+	                            </div><!-- end title -->
+	                            <form class="big-contact-form"  action="javascript:addCourse();" method="post">
+	                              <select id="mdfycList" name="mdfycList" class="form-control" required>
+	                                </select>
+	                                <input type="text" name="mdfyCourseName" id="mdfyCourseName" class="form-control" placeholder="Enter Course Name" required>
+	                                <select id="isMdfyCourseActive" name="isMdfyCourseActive" class="form-control" required="required">
+	                                	<option value="false"> In Active </option>
+	                                	<option value="true"> Active </option>
+	                                </select>
+	                                <br>
+	                                <button type="submit" class="btn btn-primary">Modify Course</button>
+	                            </form>
+	                        </div><!-- end col -->
+	                    </div><!-- end row -->
+	                    
+	                    
+	                    <div class="row"  style="display: none;" id="removeCourseDivRow" >
+	                        <div class="col-md-6 col-md-offset-3">
+	                            <div class="section-title text-center"><br>
+	                                <h3>Remove Course</h3>
+	                                <p></p>
+	                            </div><!-- end title -->
+	                            <form class="big-contact-form"  action="javascript:addCourse();" method="post">
+	                            <select id="rmcList" name="rmcList" class="form-control" required>
+	                                </select>
+	                              	<input type="text" name="courseName" id="courseName" class="form-control" placeholder="Enter Course Name" required>
+	                                   <br>
+	                                <button type="submit" class="btn btn-primary">Remove Course</button>
+	                            </form>
+	                        </div><!-- end col -->
+	                    </div><!-- end row -->
+	                    
+	                    
+	                    <div class="row"  style="display: none;" id="eodCourseDivRow" >
+	                        <div class="col-md-6 col-md-offset-3">
+	                            <div class="section-title text-center"><br>
+	                                <h3>Enable Or Disable Course</h3>
+	                                <p></p>
+	                            </div><!-- end title -->
+	                            <form class="big-contact-form"  action="javascript:addCourse();" method="post">
+	                                <select id="eodcList" name="eodcList" class="form-control" required>
+	                                </select>
+	                                <select id="iseodCourseActive" name="iseodCourseActive" class="form-control" required="required">
+	                                	<option value="false"> In Active </option>
+	                                	<option value="true"> Active </option>
+	                                </select>
+	                                <br>
+	                                <button type="submit" class="btn btn-primary">Enable Or Disable Course</button>
+	                            </form>
+	                        </div><!-- end col -->
+	                    </div><!-- end row -->
+	                    
+	                </div><!-- end container -->
+	            </div>
+	        </section>
+	    </div><!-- end wrapper -->
 </div>
 
 
@@ -63,66 +175,62 @@ function closeNav() {
 
 
 	function loadMenuForm(actionName) {
-
-		var htmlFileName = "../admin/";
-		
+		$("[id$=DivRow]").hide();
 		switch (actionName) {
 		case "addTopic":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="addCourse.html";
+			$("#addCourseDivRow").show();
 			break;
 		case "modifyTopic":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="addCourse.html";
+			$("#modifyTopicDivRow").show();
 			break;
 		case "removeTopic":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="addCourse.html";
+			$("#removeTopicDivRow").show();
 			break;
 		case "eodSubject":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="addCourse.html";
+			$("#eodSubjectDivRow").show();
 			break;
 		case "addSubject":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="addCourse.html";
+			$("#addSubjectDivRow").show();
 			break;
 		case "modifySubject":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="addCourse.html";
+			$("#modifySubjectDiv").show();
 			break;
 		case "removeSubject":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="addCourse.html";
+			$("#removeSubjectDivRow").show();
 			break;
 		case "eodSubject":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="addCourse.html";
+			$("#eodSubjectDivRow").show();
 			break;
 		case "addCourse":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="addCourse.html";
+			$("#addCourseDivRow").show();
 			break;
 		case "modifyCourse":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="modifyCourse.html";
+			$("#modifyCourseDivRow").show();
 			break;
 		case "removeCourse":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="removeCourse.html";
+			$("#removeCourseDivRow").show();
 			break;
 		case "eodCourse":
 			console.log("Triggered action is : " + actionName);
-			htmlFileName +="enableOrDisableCourse.html";
+			$("#eodCourseDivRow").show();
 			break;
 
 		default:
 			console.log("Triggered action is : " + actionName);
-		htmlFileName +="addCourse.html";
+		$('#addCourseDivRow').show();
 			break;
 		}
-		$('#containerDiv').load(htmlFileName);
-
 	}
 </script>
 <script>

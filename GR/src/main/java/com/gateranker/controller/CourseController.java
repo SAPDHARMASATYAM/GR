@@ -1,5 +1,6 @@
 package com.gateranker.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -104,6 +105,8 @@ public class CourseController {
 	public Response addCourse(@RequestBody Course course) throws Exception {
 		Response response = new Response();
 		try {
+			course.setNew(true);
+			course.setDateOfCourseRegistration(new Date());
 			Course addCourseResponse = courseService.addCourse(course);
 			if(null != addCourseResponse) {
 				response.setResponseStatus(Constants.SUCCESS);
