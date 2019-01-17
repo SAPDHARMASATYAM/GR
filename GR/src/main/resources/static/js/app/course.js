@@ -6,7 +6,7 @@ function addCourse() {
 		course.courseName = $('#courseName').val();
 		course.isCourseActive = $('#isCourseActive').val();
 
-		console.log();
+		console.log(course);
 		$.ajax({
 			url : "../course/addCourse",
 			type : 'POST',
@@ -40,8 +40,9 @@ function addCourse() {
 	} catch (ex) {
 		alert(ex);
 	}
-	window.location="../admin.html";
+	//window.location.href="../admin/adminHome.html";
 }
+
 function modifyCourse() {
 
 	console.log("Login called");
@@ -52,7 +53,7 @@ function modifyCourse() {
 
 		console.log();
 		$.ajax({
-			url : "./course/addCourse",
+			url : "../course/addCourse",
 			type : 'POST',
 			dataType : 'json',
 			data : JSON.stringify(course),
@@ -85,7 +86,7 @@ function modifyCourse() {
 	} catch (ex) {
 		alert(ex);
 	}
-	window.location="../admin.html";
+	//window.location="../admin/adminHome.html";
 }
 function removeCourse() {
 
@@ -97,7 +98,7 @@ function removeCourse() {
 
 		console.log();
 		$.ajax({
-			url : "./course/addCourse",
+			url : "../course/addCourse",
 			type : 'POST',
 			dataType : 'json',
 			data : JSON.stringify(course),
@@ -130,7 +131,7 @@ function removeCourse() {
 	} catch (ex) {
 		alert(ex);
 	}
-	window.location="../admin.html";
+	window.location="../admin/adminHome.html";
 }
 function eodCourse() {
 
@@ -142,7 +143,7 @@ function eodCourse() {
 
 		console.log();
 		$.ajax({
-			url : "./course/addCourse",
+			url : "../course/addCourse",
 			type : 'POST',
 			dataType : 'json',
 			data : JSON.stringify(course),
@@ -175,7 +176,7 @@ function eodCourse() {
 	} catch (ex) {
 		alert(ex);
 	}
-	window.location="../admin.html";
+	//window.location="../admin/adminHome.html";
 }
 function getAllCoursesByActiveIndicator(flag) {
 
@@ -187,7 +188,7 @@ function getAllCoursesByActiveIndicator(flag) {
 
 		console.log();
 		$.ajax({
-			url : "./course/getAllCourses/"+flag,
+			url : "../course/getAllCourses/"+flag,
 			type : 'GET',
 			dataType : 'json',
 			data : JSON.stringify(course),
@@ -220,22 +221,17 @@ function getAllCoursesByActiveIndicator(flag) {
 	} catch (ex) {
 		alert(ex);
 	}
-	window.location="../admin.html";
+	//window.location="../admin/adminHome.html";
 }
 function getAllCourses() {
 
-	console.log("Login called");
+	console.log("getAllCourses called");
 	try {
-		var course = new Object();
-		course.userName = $('#userName').val();
-		course.password = $('#pwd').val();
-
-		console.log();
+		$("#modifyCourseDivRow").show();
 		$.ajax({
-			url : "./course/addCourse",
-			type : 'POST',
+			url : "../course/getAllCourses",
+			type : 'GET',
 			dataType : 'json',
-			data : JSON.stringify(course),
 			contentType : 'application/json',
 			mimeType : 'application/json',
 
@@ -249,11 +245,11 @@ function getAllCourses() {
 				
 				if(jsonObj.responseStatus == "success"){
 					// Check browser support for session storage
+					//mdfycList
 					if (typeof(Storage) !== "undefined") {
 						// Store
 						var responseObject =JSON.parse(JSON.stringify(data.responseContent));
-						sessionStorage.setItem("emailId", responseObject.userName);
-						console.log("userName stored in session storage. " + sessionStorage.getItem("userName"));
+						sessionStorage.setItem("getAllCourses", responseObject);
 					} else {console.log("Sorry, your browser does not support Web Storage...");}
 				}else{}
 			},
@@ -262,8 +258,9 @@ function getAllCourses() {
 				console.log("error: " + JSON.stringify(data) + " status: " + status + " er:" + er);
 			}
 		});
+		
 	} catch (ex) {
 		alert(ex);
 	}
-	window.location="../admin.html";
+	//window.location="../admin/adminHome.html";
 }

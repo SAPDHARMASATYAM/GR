@@ -215,7 +215,8 @@ function closeNav() {
 			break;
 		case "modifyCourse":
 			console.log("Triggered action is : " + actionName);
-			$("#modifyCourseDivRow").show();
+			getAllCourses();
+// 			$("#modifyCourseDivRow").show();
 			break;
 		case "removeCourse":
 			console.log("Triggered action is : " + actionName);
